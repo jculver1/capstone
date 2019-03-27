@@ -20,9 +20,17 @@ https://trello.com/invite/b/1jamE5WS/6a5107f64354eb53855fd8675ddea118/capstone
 Tech used:
 1. React Native
 1. PSQL
+1. Node.js
+1. Express
 1. Tensorflow.js
     1. Object detection
+    1. Tensorflow light
+    1. React-Native TensorFlow
+        1. Need CocoaPods and Xcode
 1. USDA API
 
 Color palette:
-1. 
+1. #EE4266 PARADISE PINK
+1. #B9F5D8 MAGIC MINT
+1.#FABC3C MAXIMUM YELLOW RED
+
