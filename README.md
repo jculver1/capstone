@@ -34,7 +34,8 @@ Color palette:
 1. #007DFF Dark Blue
 1. #A9A9A9 Light Gray
 1. #FFFE9F Light Yellow
-1. #404040 Dark Gray ![alt text](https://www.colorhexa.com/404040.png)
+1. #404040 Dark Gray
+![alt text](https://www.colorhexa.com/404040.png)
 
 
 Server Side:
