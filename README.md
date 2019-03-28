@@ -35,7 +35,9 @@ Color palette:
 1. #A9A9A9 Light Gray
 1. #FFFE9F Light Yellow
 1. #404040 Dark Gray
-![alt text](https://www.colorhexa.com/404040.png)
+
+1. Colors: ![alt text](https://www.colorhexa.com/ee4266.png) ![alt text](https://www.colorhexa.com/007dff.png) ![alt text](https://www.colorhexa.com/a9a9a9.png) ![alt text](https://www.colorhexa.com/fffe9f.png) ![alt text](hhttps://www.colorhexa.com/404040.png)    
+
 
 
 Server Side:
