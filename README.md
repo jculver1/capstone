@@ -40,7 +40,7 @@ Color palette:
 ![alt text](https://www.colorhexa.com/007dff.png) 
 ![alt text](https://www.colorhexa.com/a9a9a9.png) 
 ![alt text](https://www.colorhexa.com/fffe9f.png) 
-![alt text](hhttps://www.colorhexa.com/404040.png)    
+![alt text](https://www.colorhexa.com/404040.png)    
 
 
 
