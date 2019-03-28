@@ -5,12 +5,11 @@ Problem Statement
 Just 1 in 10 adults meet the federal recommendations for fruit and vegetable consumption. Research has shown that having visual aids during nutrition education can have a positive effect on individuals who are looking to make healthier choices. This application will allow the user to check the nutrition status of foods by conveniently taking a photo of the item.
 
 Please note, everything in pink is a stretch goal (in the ERD). 
-
 ERD:
 https://drive.google.com/file/d/1xFrq7y9HUhuC13e6CNbLfcb-wCd_TeXI/view?usp=sharing
 
 Wireframes:
-https://www.justinmind.com/usernote/prototypes/39976685/39980508/39980510/index.html#/screens/d12245cc-1680-458d-89dd-4f0d7fb22724
+https://www.justinmind.com/usernote/tests/39976685/39980508/39980510/index.html
 
 Trello:
 https://trello.com/invite/b/1jamE5WS/6a5107f64354eb53855fd8675ddea118/capstone
