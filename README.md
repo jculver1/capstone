@@ -31,6 +31,16 @@ Tech used:
 
 Color palette:
 1. #EE4266 PARADISE PINK
-1. #B9F5D8 MAGIC MINT
-1. #FABC3C MAXIMUM YELLOW RED
+1. #007DFF Dark Blue
+1. #A9A9A9 Light Gray
+1. #FFFE9F Light Yellow
+1. #404040 Dark Gray ![alt text](https://www.colorhexa.com/404040.png)
+
+
+Server Side:
+1. Get request from food_items table return USDA_id
+1. Get request from nutrients table return daily value 
+1. stretch goals:
+    1. post request to user_intake. Send list of all nutrients to the table.
+    1. get request from user_intake join food_items.id and join nutrients.id. Return food name, nutrient name, and quanity where data_stamp is equal to current date. 
 
