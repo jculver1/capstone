@@ -48,7 +48,7 @@ export default class Camera extends React.Component {
 		});
 
 		// Identify the image
-		app.models.predict(Clarifai.GENERAL_MODEL, {base64: imageData})
+		app.models.predict(Clarifai.FOOD_MODEL, {base64: imageData})
 			.then((response) => this.displayAnswer(response.outputs[0].data.concepts[0].name)
 			.catch((err) => alert(err))
 		);
@@ -66,16 +66,25 @@ export default class Camera extends React.Component {
 		Alert.alert(
 			this.state.identifedAs,
 			'',
-			{ cancelable: false }
+			[
+				{
+					text: 'Try again',
+					onPress: () => this.camera.resumePreview(),
+					style: 'cancel',
+				},
+				{text: 'OK', onPress: () => console.log('OK Pressed')},
+			],
+			{cancelable: false},
 		  )
 
 		// Resume the preview
-		this.camera.resumePreview();
+		// Need if statement - if true navigate to nutrient page, if false resumePreview
+
+		// this.camera.resumePreview();
 	}
     
 	render() {
-		return (
-						
+		return (				
             <RNCamera ref={ref => {this.camera = ref;}} style={styles.preview}>
             <ActivityIndicator size="large" style={styles.loadingIndicator} color="#fff" animating={this.state.loading}/>
                 <CaptureButton buttonDisabled={this.state.loading} onClick={this.takePicture.bind(this)}/>
