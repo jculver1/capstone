@@ -1,9 +1,19 @@
 import React from 'react';
 import { Dimensions, Alert, StyleSheet, ActivityIndicator } from 'react-native';
+import { createStackNavigator, createAppContainer } from "react-navigation";
 import { RNCamera } from 'react-native-camera';
-import CaptureButton from './Button.js'
+import CaptureButton from './Button.js';
+import ItemDetails from './ItemDetails'
+
+const NestedNavigator = createStackNavigator({
+	NutrientDetails: ItemDetails
+	}
+);
+
+const NestedContainer = createAppContainer(NestedNavigator);
 
 export default class Camera extends React.Component {
+
 
 	constructor(props){
 		super(props);
@@ -69,10 +79,11 @@ export default class Camera extends React.Component {
 			[
 				{
 					text: 'Try again',
-					onPress: () => this.camera.resumePreview(),
-					style: 'cancel',
+					// onPress: () => this.camera.resumePreview(),
+					onPress: () => console.log('hello'),
 				},
-				{text: 'OK', onPress: () => console.log('OK Pressed')},
+				{text: 'OK', onPress: () => 
+				this.props.navigation.navigate('NutrientDetails')},
 			],
 			{cancelable: false},
 		  )
