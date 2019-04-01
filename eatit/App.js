@@ -1,6 +1,10 @@
 import React  from 'react';
 import { StyleSheet, View } from 'react-native';
 import Camera from './components/Camera.js';
+import { createAppContainer } from 'react-navigation';
+import AppNavigator from './components/Home'
+
+const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends React.Component {
 
@@ -11,9 +15,10 @@ export default class App extends React.Component {
 
 	render() {
 		return (
-			<View style={styles.container}>
-				<Camera />
-		 	</View>
+			// <View style={styles.container}>
+			// 	<Camera />
+		 	// </View>
+			<AppContainer/>
 		);
 	}
 }

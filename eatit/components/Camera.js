@@ -75,6 +75,7 @@ export default class Camera extends React.Component {
     
 	render() {
 		return (
+						
             <RNCamera ref={ref => {this.camera = ref;}} style={styles.preview}>
             <ActivityIndicator size="large" style={styles.loadingIndicator} color="#fff" animating={this.state.loading}/>
                 <CaptureButton buttonDisabled={this.state.loading} onClick={this.takePicture.bind(this)}/>
