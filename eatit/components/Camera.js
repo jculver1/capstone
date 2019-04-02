@@ -3,17 +3,8 @@ import { Dimensions, Alert, StyleSheet, ActivityIndicator } from 'react-native';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import { RNCamera } from 'react-native-camera';
 import CaptureButton from './Button.js';
-import ItemDetails from './ItemDetails'
 import AppNavigator from './Home'
 
-// const AppContainer = createAppContainer(AppNavigator);
-
-const NutrientDetails = createStackNavigator({
-	ItemInformation: ItemDetails,
-},
-);
-
-createAppContainer(NutrientDetails)
 
 export default class Camera extends React.Component {
 
@@ -72,8 +63,7 @@ export default class Camera extends React.Component {
 			[
 				{
 					text: 'Try again',
-					// onPress: () => this.camera.resumePreview(),
-					onPress: () => console.log('hello'),
+					onPress: () => this.camera.resumePreview(),
 				},
 				{text: 'Add Item', 
 				onPress:() => this.props.navigation.navigate('ItemInformation')}
@@ -92,8 +82,6 @@ export default class Camera extends React.Component {
 		);
 	}
 }
-
-// const AppContainer = createAppContainer(AppNavigator);
 
 const styles = StyleSheet.create({
     preview: {
