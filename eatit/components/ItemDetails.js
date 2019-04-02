@@ -3,6 +3,13 @@ import { Button, View, Text } from "react-native";
 
 class ItemDetails extends React.Component {
 
+  constructor(props){
+		super(props);
+      this.state = { 
+				food_id: ''
+		}
+    }
+
   foodIdentified = this.props.navigation.state.params.foodItem
 
   foodsRoute = `http://localhost:3001/foods/${this.foodIdentified}`
@@ -23,7 +30,7 @@ class ItemDetails extends React.Component {
 
   render() {
     this.getFoodName()
-    // console.log(this.state.food_id)
+    console.log(this.state.food_id)
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center"}}>
         <Text>Check out the nutrients in {this.foodIdentified}!</Text> 
