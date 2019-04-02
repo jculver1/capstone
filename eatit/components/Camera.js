@@ -1,6 +1,5 @@
 import React from 'react';
 import { Dimensions, Alert, StyleSheet, ActivityIndicator } from 'react-native';
-import { createStackNavigator, createAppContainer } from "react-navigation";
 import { RNCamera } from 'react-native-camera';
 import CaptureButton from './Button.js';
 import AppNavigator from './Home'
@@ -66,7 +65,7 @@ export default class Camera extends React.Component {
 					onPress: () => this.camera.resumePreview(),
 				},
 				{text: 'Add Item', 
-				onPress:() => this.props.navigation.navigate('ItemInformation')}
+				onPress:() => this.props.navigation.navigate('ItemInformation', { foodItem: this.state.identifedAs })}
 			]
 		  )
 		}
