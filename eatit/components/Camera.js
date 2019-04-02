@@ -4,60 +4,54 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import { RNCamera } from 'react-native-camera';
 import CaptureButton from './Button.js';
 import ItemDetails from './ItemDetails'
+import AppNavigator from './Home'
 
-const NestedNavigator = createStackNavigator({
-	NutrientDetails: ItemDetails
-	}
+// const AppContainer = createAppContainer(AppNavigator);
+
+const NutrientDetails = createStackNavigator({
+	ItemInformation: ItemDetails,
+},
 );
 
-const NestedContainer = createAppContainer(NestedNavigator);
+createAppContainer(NutrientDetails)
 
 export default class Camera extends React.Component {
 
-
 	constructor(props){
 		super(props);
-        this.state = { 
-			identifedAs: '',
-			loading: false
+      this.state = { 
+				identifedAs: '',
+				loading: false
 		}
     }
 
     takePicture = async function(){
 		
 		if (this.camera) {
-
-			// Pause the camera's preview
 			this.camera.pausePreview();
             
-            // Set the activity indicator
 			this.setState((previousState, props) => ({
 				loading: true
 			}));
 			
-			// Set options
 			const options = {
                 base64: true
             };
 			
-			// Get the base64 version of the image
 			const data = await this.camera.takePictureAsync(options)
 			
-			// Get the identified image
 			this.identifyImage(data.base64);
 		}
 	}
 
 	identifyImage(imageData){
 
-		// Initialise Clarifai api
 		const Clarifai = require('clarifai');
 
 		const app = new Clarifai.App({
 			apiKey: '135f573fb58143e2b10390a6cf6aad7c'
 		});
 
-		// Identify the image
 		app.models.predict(Clarifai.FOOD_MODEL, {base64: imageData})
 			.then((response) => this.displayAnswer(response.outputs[0].data.concepts[0].name)
 			.catch((err) => alert(err))
@@ -66,13 +60,12 @@ export default class Camera extends React.Component {
 
 	displayAnswer(identifiedImage){
 
-		// Dismiss the acitivty indicator
 		this.setState((prevState, props) => ({
 			identifedAs:identifiedImage,
 			loading:false
 		}));
 
-		// Show an alert with the answer on
+	showAlert = () => {
 		Alert.alert(
 			this.state.identifedAs,
 			'',
@@ -82,18 +75,14 @@ export default class Camera extends React.Component {
 					// onPress: () => this.camera.resumePreview(),
 					onPress: () => console.log('hello'),
 				},
-				{text: 'OK', onPress: () => 
-				this.props.navigation.navigate('NutrientDetails')},
-			],
-			{cancelable: false},
+				{text: 'Add Item', 
+				onPress:() => this.props.navigation.navigate('ItemInformation')}
+			]
 		  )
-
-		// Resume the preview
-		// Need if statement - if true navigate to nutrient page, if false resumePreview
-
-		// this.camera.resumePreview();
+		}
+		showAlert()
 	}
-    
+  
 	render() {
 		return (				
             <RNCamera ref={ref => {this.camera = ref;}} style={styles.preview}>
@@ -103,6 +92,8 @@ export default class Camera extends React.Component {
 		);
 	}
 }
+
+// const AppContainer = createAppContainer(AppNavigator);
 
 const styles = StyleSheet.create({
     preview: {
@@ -118,3 +109,4 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	}
 });
+

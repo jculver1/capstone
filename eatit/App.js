@@ -1,6 +1,5 @@
 import React  from 'react';
 import { StyleSheet, View } from 'react-native';
-import Camera from './components/Camera.js';
 import { createAppContainer } from 'react-navigation';
 import AppNavigator from './components/Home'
 
@@ -12,12 +11,8 @@ export default class App extends React.Component {
 		super(props);
 		process.nextTick = setImmediate;
 	}
-
 	render() {
 		return (
-			// <View style={styles.container}>
-			// 	<Camera />
-		 	// </View>
 			<AppContainer/>
 		);
 	}
