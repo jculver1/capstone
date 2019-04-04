@@ -1,13 +1,27 @@
 import React from "react";
-import { Button, View, Text, StyleSheet, FlatList } from "react-native";
+import { Button, View, Text, StyleSheet, FlatList, ListView } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+
+
+const DisplayData = (props) => {
+  if(props.checkLoaded){
+    return props.nutrientData.map((item) => {
+          return(
+            <Text>{item.name + ' ' + item.value + ''}</Text>
+          )
+        })
+  }else{
+    return <Text>Loading...</Text>
+  }
+}
 
 class ItemDetails extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
-      nutrientData: []
+      nutrientData: [],
+      checkLoaded: false
     };
     }
 
@@ -23,8 +37,11 @@ class ItemDetails extends React.Component {
       return fetch(`https://api.nal.usda.gov/ndb/reports/?ndbno=${food_id}&type=f&format=json&api_key=g03EsNMIdLVGVFxer9G0rkguZEPyUf2dcDyxlKH6&nutrients=205&nutrients=204&nutrients=208&nutrients=269`)
       .then(respons => respons.json())
       .then(responseJson => {
-        this.setState({nutrientData : responseJson.report.food})
-        console.log(this.state.nutrientData)
+        this.setState(
+          {nutrientData : responseJson.report.food.nutrients,
+          checkLoaded : !this.state.checkLoaded
+          }
+          )
       })
       .catch(error => {
         console.error(error)
@@ -32,22 +49,11 @@ class ItemDetails extends React.Component {
     })
   }
 
-  // nutrientList() {
-  //   return this.state.nutrientData.nutrients.map((item) => {
-  //     return(
-  //       <Text>{item.name}</Text>
-  //     )
-  //   })
-  // }
-
   render() {
-    console.log(this.state.nutrientData)
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center"}}>
         <Text>Check out the nutrients in {this.foodIdentified}!</Text> 
-        <ScrollView>
-         
-        </ScrollView>
+        <DisplayData nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded}/>
       </View>
     );
   }
@@ -58,15 +64,6 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 18,
     height: 44,
-  },
-  welcome: {
-    flex: 1,
-    margin: 20,
-    backgroundColor: 'orange',
-    margin: 10,
-    textAlign: 'center',
-    fontSize: 20,
-    paddingTop: 70,
   }
 });
 
