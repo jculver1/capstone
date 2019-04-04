@@ -9,8 +9,7 @@ const DisplayData = (props) => {
     const findPercentages = vitAndMin.map(item => {
       for(let i = 0; i < props.DRI.length; i++){
         if(props.DRI[i].name === item.name){
-          console.log(item.name, item.value, props.DRI[i].daily_value)
-          return(`${item.name}: ${(item.value / props.DRI[i].daily_value) * 100} ${item.unit}`)
+          return(`${item.name}: ${((item.value / props.DRI[i].daily_value) * 100).toFixed(2)}%`)
         }
       }
     })
