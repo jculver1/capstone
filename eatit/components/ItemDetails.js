@@ -82,7 +82,7 @@ class ItemDetails extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center"}}>
         <Text>Check out the nutrients in {this.foodIdentified}!</Text> 
-        <ScrollView>
+        <ScrollView contentContainerStyle={styles.contentContainer}>
           <DisplayData nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded} DRI={this.state.DRI} DRILoaded={this.state.DRILoaded}/>
         </ScrollView>
       </View>
