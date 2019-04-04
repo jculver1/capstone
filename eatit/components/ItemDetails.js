@@ -8,7 +8,7 @@ const DisplayData = (props) => {
     const vitAndMin = props.nutrientData.filter(item => item.group === 'Minerals' || item.group === 'Vitamins' && item.value > 0)
     return vitAndMin.map((item) => {
           return(
-              <Text>{item.name + ' ' + item.value + ''}</Text>
+              <Text>{item.name + ' ' + item.value + '' + item.unit}</Text>
           )
         })
   }else{
