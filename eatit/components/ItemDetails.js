@@ -7,7 +7,7 @@ const DisplayData = (props) => {
   if(props.checkLoaded){
     return props.nutrientData.map((item) => {
           return(
-            <Text>{item.name + ' ' + item.value + ''}</Text>
+              <Text>{item.name + ' ' + item.value + ''}</Text>
           )
         })
   }else{
@@ -53,17 +53,17 @@ class ItemDetails extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center"}}>
         <Text>Check out the nutrients in {this.foodIdentified}!</Text> 
-        <DisplayData nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded}/>
+        <ScrollView>
+          <DisplayData nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded}/>
+        </ScrollView>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
+  contentContainer: {
+    paddingVertical: 20
   }
 });
 
