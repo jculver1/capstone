@@ -1,12 +1,14 @@
 import React from "react";
-import { Button, View, Text, StyleSheet } from "react-native";
+import { Button, View, Text, StyleSheet, FlatList } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
 class ItemDetails extends React.Component {
 
   constructor(props){
-		super(props);
-     
+    super(props);
+    this.state = {
+      nutrientData: []
+    };
     }
 
   foodIdentified = this.props.navigation.state.params.foodItem
@@ -30,13 +32,21 @@ class ItemDetails extends React.Component {
     })
   }
 
-  render() {
+  // nutrientList() {
+  //   return this.state.nutrientData.nutrients.map((item) => {
+  //     return(
+  //       <Text>{item.name}</Text>
+  //     )
+  //   })
+  // }
 
+  render() {
+    console.log(this.state.nutrientData)
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center"}}>
         <Text>Check out the nutrients in {this.foodIdentified}!</Text> 
         <ScrollView>
-          <Text style={styles.welcome}>scrollview</Text>
+         
         </ScrollView>
       </View>
     );
@@ -44,6 +54,11 @@ class ItemDetails extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+  },
   welcome: {
     flex: 1,
     margin: 20,
