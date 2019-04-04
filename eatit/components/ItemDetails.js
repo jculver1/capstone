@@ -4,11 +4,24 @@ import { ScrollView } from "react-native-gesture-handler";
 
 
 const DisplayData = (props) => {
-  if(props.checkLoaded){
+  if(props.checkLoaded && props.DRILoaded){
     const vitAndMin = props.nutrientData.filter(item => item.group === 'Minerals' || item.group === 'Vitamins' && item.value > 0)
-    return vitAndMin.map((item) => {
+    const findPercentages = vitAndMin.map(item => {
+      for(let i = 0; i < props.DRI.length; i++){
+        if(props.DRI[i].name === item.name){
+          return(`${item.name}, ${parseFloat(item.value / props.DRI.daily_value) * 100} ${item.unit}`)
+        }
+      }
+    })
+    // const findPercentages = vitAndMin.map(item => {
+    //   if(item.name === props.DRI.name ){
+    //     let percentage = (item.value / props.DRI.daily_value) * 100
+    //     return item, percentage
+    //   }
+    // })
+    return findPercentages.map((item) => {
           return(
-              <Text>{item.name + ' ' + item.value + '' + item.unit}</Text>
+              <Text>{item}</Text>
           )
         })
   }else{
@@ -22,7 +35,9 @@ class ItemDetails extends React.Component {
     super(props);
     this.state = {
       nutrientData: [],
-      checkLoaded: false
+      checkLoaded: false,
+      DRI: [],
+      DRILoaded: false
     };
     }
 
@@ -30,7 +45,10 @@ class ItemDetails extends React.Component {
 
   foodsRoute = `http://localhost:3001/foods/${this.foodIdentified}`
 
+  nutrientRoute = 'http://localhost:3001/nutrients'
+
   componentDidMount(){
+    this.fetchNutrientComparisons()
     return fetch(this.foodsRoute)
     .then(response => response.json())
     .then(responseJson => {
@@ -50,12 +68,28 @@ class ItemDetails extends React.Component {
     })
   }
 
+  fetchNutrientComparisons(){
+    return fetch(this.nutrientRoute)
+    .then(response => response.json())
+    .then(responseJson => {
+      this.setState(
+        {DRI: responseJson,
+        DRILoaded: true}
+      )
+      console.log(this.state.DRI)
+    })
+    .catch(error => {
+      console.error(error)
+    })
+  }
+
+
   render() {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center"}}>
         <Text>Check out the nutrients in {this.foodIdentified}!</Text> 
         <ScrollView>
-          <DisplayData nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded}/>
+          <DisplayData nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded} DRI={this.state.DRI} DRILoaded={this.state.DRILoaded}/>
         </ScrollView>
       </View>
     );
