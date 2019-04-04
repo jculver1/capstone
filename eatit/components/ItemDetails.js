@@ -9,16 +9,11 @@ const DisplayData = (props) => {
     const findPercentages = vitAndMin.map(item => {
       for(let i = 0; i < props.DRI.length; i++){
         if(props.DRI[i].name === item.name){
-          return(`${item.name}, ${parseFloat(item.value / props.DRI.daily_value) * 100} ${item.unit}`)
+          console.log(item.name, item.value, props.DRI[i].daily_value)
+          return(`${item.name}: ${(item.value / props.DRI[i].daily_value) * 100} ${item.unit}`)
         }
       }
     })
-    // const findPercentages = vitAndMin.map(item => {
-    //   if(item.name === props.DRI.name ){
-    //     let percentage = (item.value / props.DRI.daily_value) * 100
-    //     return item, percentage
-    //   }
-    // })
     return findPercentages.map((item) => {
           return(
               <Text>{item}</Text>
