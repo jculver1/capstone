@@ -4,18 +4,23 @@ import { ScrollView } from "react-native-gesture-handler";
 
 
 const DisplayData = (props) => {
+  let newAry = []
   if(props.checkLoaded && props.DRILoaded){
     const vitAndMin = props.nutrientData.filter(item => item.group === 'Minerals' || item.group === 'Vitamins' && item.value > 0)
     const findPercentages = vitAndMin.map(item => {
       for(let i = 0; i < props.DRI.length; i++){
         if(props.DRI[i].name === item.name){
           return(`${item.name}: ${((item.value / props.DRI[i].daily_value) * 100).toFixed(2)}%`)
-        }
+      }
       }
     })
-    return findPercentages.map((item) => {
+
+
+   const sortByPercentages = findPercentages.sort()
+
+    return sortByPercentages.map((item) => {
           return(
-              <Text>{item}</Text>
+              <Text>{item}</Text> 
           )
         })
   }else{
@@ -37,9 +42,9 @@ class ItemDetails extends React.Component {
 
   foodIdentified = this.props.navigation.state.params.foodItem
 
-  foodsRoute = `http://localhost:3001/foods/${this.foodIdentified}`
+  foodsRoute = `https://glacial-wave-75572.herokuapp.com/foods/${this.foodIdentified}`
 
-  nutrientRoute = 'http://localhost:3001/nutrients'
+  nutrientRoute = 'https://glacial-wave-75572.herokuapp.com/nutrients'
 
   componentDidMount(){
     this.fetchNutrientComparisons()
@@ -47,6 +52,7 @@ class ItemDetails extends React.Component {
     .then(response => response.json())
     .then(responseJson => {
       let food_id = responseJson[0].usda_id
+      console.log(food_id)
       return fetch(`https://api.nal.usda.gov/ndb/reports/?ndbno=${food_id}&type=f&format=json&api_key=g03EsNMIdLVGVFxer9G0rkguZEPyUf2dcDyxlKH6&nutrients=205&nutrients=204&nutrients=208&nutrients=269`)
       .then(respons => respons.json())
       .then(responseJson => {
