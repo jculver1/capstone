@@ -4,7 +4,6 @@ import { ScrollView } from "react-native-gesture-handler";
 
 
 const DisplayData = (props) => {
-  let newAry = []
   if(props.checkLoaded && props.DRILoaded){
     const vitAndMin = props.nutrientData.filter(item => item.group === 'Minerals' || item.group === 'Vitamins' && item.value > 0)
     const findPercentages = vitAndMin.map(item => {
@@ -14,9 +13,15 @@ const DisplayData = (props) => {
       }
       }
     })
+   
+   const regex = /[+-]?\d+(\.\d+)?/g;
+
+   let customSort = function (a, b) {
+      return ((b.match(regex)) - ((a.match(regex))));
+  } 
 
 
-   const sortByPercentages = findPercentages.sort()
+  let sortByPercentages = findPercentages.sort(customSort)
 
     return sortByPercentages.map((item) => {
           return(
