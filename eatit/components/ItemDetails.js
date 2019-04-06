@@ -16,12 +16,12 @@ const DisplayData = (props) => {
    
    const regex = /[+-]?\d+(\.\d+)?/g;
 
-   let customSort = function (a, b) {
+   const customSort = function (a, b) {
       return ((b.match(regex)) - ((a.match(regex))));
   } 
 
 
-  let sortByPercentages = findPercentages.sort(customSort)
+  const sortByPercentages = findPercentages.sort(customSort)
 
     return sortByPercentages.map((item) => {
           return(
