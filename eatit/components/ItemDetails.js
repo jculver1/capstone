@@ -13,14 +13,11 @@ const DisplayData = (props) => {
       }
       }
     })
-   
    const regex = /[+-]?\d+(\.\d+)?/g;
-
+   
    const customSort = function (a, b) {
       return ((b.match(regex)) - ((a.match(regex))));
   } 
-
-
   const sortByPercentages = findPercentages.sort(customSort)
 
     return sortByPercentages.map((item) => {
