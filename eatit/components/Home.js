@@ -9,7 +9,7 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Image source={require('../assets/logo.png')}/>
+        <Image source={require('../assets/logo2.png')}/>
         <Button
           title="Check the Nutrients!"
           onPress={() => this.props.navigation.navigate('CheckIt')}
