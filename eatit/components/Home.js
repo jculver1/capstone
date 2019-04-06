@@ -10,8 +10,9 @@ class HomeScreen extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Image source={require('../assets/logo2.png')}/>
+        <Text style={{ fontSize: 20, marginTop: 20}}>Checkout the nutrients in your food</Text>
         <Button
-          title="Check the Nutrients!"
+          title="Click here to get started!"
           onPress={() => this.props.navigation.navigate('CheckIt')}
         />
       </View>
