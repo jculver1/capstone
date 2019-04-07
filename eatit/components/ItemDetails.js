@@ -48,7 +48,7 @@ const DisplayMacroNutrients = (props) => {
 
   return macronutrients.map(item => {
     return(
-      <View style={{flexDirection: 'row', flex: 1, justifyContent: 'space-between', marginBottom:15 }}>
+      <View style={{flexDirection: 'row', flex: 1, justifyContent: 'space-between'}}>
         <Text>{item.name+ '     '}</Text>
         <Text>{`${item.value} ${item.unit}`}</Text>
       </View>
@@ -147,13 +147,14 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     fontSize: 23, 
     marginTop: 25,
-    marginBottom: 25,
+    marginBottom: 15,
     fontFamily: 'Cochin',
     color: "#404040"
   },
   scrollContent: {
-    flex: 1,
-    marginTop: 50
+    marginTop: 10,
+    fontFamily: 'Cochin',
+    color: "#404040"
   },
   button: {
     backgroundColor: "#007DFF",
