@@ -24,11 +24,15 @@ const styles = StyleSheet.create({
   container:{
     flex: 1, 
     alignItems: "center", 
-    justifyContent: "center"
+    justifyContent: "center",
+    fontFamily: 'Cochin',
+    marginBottom: 110,
   },
   subHeader:{
-    fontSize: 20, 
-    marginTop: 20
+    fontSize: 21, 
+    marginTop: 15,
+    marginBottom: 20,
+    fontFamily: 'Cochin'
   }
 })
 
