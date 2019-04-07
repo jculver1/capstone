@@ -25,20 +25,16 @@ const DisplayData = (props) => {
       }
     })
 
-  //   const regex = /[+-]?\d+(\.\d+)?/g;
-
-  //   const customSort = function (a, b) {
-  //     return ((b.match(regex)) - ((a.match(regex))));
-  // } 
-  //   const sortByPercentages = findPercentages.sort(customSort)
-
-  const sortByPercentages = findPercentages.sort((a,b) => {
-    return b.percentage - a.percentage
-  })
+    const sortByPercentages = findPercentages.sort((a,b) => {
+      return b.percentage - a.percentage
+    })
 
     return sortByPercentages.map((item) => {
           return(
-              <Text>{item.name} {item.percentage}</Text>
+              <View style={{flexDirection: 'row', flex: 1, justifyContent: 'space-between' }}>
+                <Text>{item.name+ '     '}</Text>
+                <Text>{`${item.percentage}%`}</Text>
+              </View>
           )
         })
   }else{
