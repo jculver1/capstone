@@ -1,7 +1,7 @@
 import React from "react";
-import { Button, View, Text, StyleSheet, FlatList, ListView } from "react-native";
+import { View, Text, StyleSheet, FlatList, ListView } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-
+import { Button, ThemeProvider } from 'react-native-elements';
 
 const DisplayData = (props) => {
   if(props.checkLoaded && props.DRILoaded){
@@ -105,7 +105,7 @@ class ItemDetails extends React.Component {
         <ScrollView style={styles.scrollContent}>
           <DisplayData nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded} DRI={this.state.DRI} DRILoaded={this.state.DRILoaded}/>
         </ScrollView>
-        <Button 
+        <Button style={styles.button}
           title="Check another item!"
           onPress={() => this.props.navigation.navigate('CheckIt')}
         />
@@ -131,9 +131,14 @@ const styles = StyleSheet.create({
     
   },
   scrollContent: {
-    flex: 1
-    
-  }
+    flex: 1,
+    marginTop: 50
+  },
+  button: {
+    backgroundColor: "#007DFF",
+    borderRadius: 15,
+    marginBottom: 50,  
+ }
 });
 
 export default ItemDetails;
