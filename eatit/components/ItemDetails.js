@@ -127,8 +127,8 @@ const styles = StyleSheet.create({
     fontSize: 23, 
     marginTop: 25,
     marginBottom: 25,
-    fontFamily: 'Cochin'
-    
+    fontFamily: 'Cochin',
+    color: "#404040"
   },
   scrollContent: {
     flex: 1,
