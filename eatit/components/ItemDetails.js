@@ -68,7 +68,8 @@ class ItemDetails extends React.Component {
       nutrientData: [],
       checkLoaded: false,
       DRI: [],
-      DRILoaded: false
+      DRILoaded: false,
+    
     };
     }
 
@@ -148,7 +149,6 @@ const styles = StyleSheet.create({
   },
   header:{
     marginTop: 20,
-    marginBottom: 20,
     fontSize: 23, 
     marginTop: 25,
     marginBottom: 25,
@@ -158,12 +158,12 @@ const styles = StyleSheet.create({
   scrollContent: {
     flex: 1,
     marginTop: 20,
-    marginBottom: 20
   },
   button: {
     backgroundColor: "#007DFF",
     borderRadius: 15,
-    marginBottom: 50,  
+    marginBottom: 50,
+    marginTop: 20  
  },
  nutrientHeaders:{
   fontFamily: 'Cochin',
