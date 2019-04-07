@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList, ListView } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { Button, ThemeProvider } from 'react-native-elements';
+import { Button} from 'react-native-elements';
 
 const DisplayData = (props) => {
   if(props.checkLoaded && props.DRILoaded){
@@ -40,6 +40,23 @@ const DisplayData = (props) => {
   }else{
     return <Text>Loading...</Text>
   }
+}
+
+const DisplayMacroNutrients = (props) => {
+  if(props.checkLoaded && props.DRILoaded){
+    const macronutrients = props.nutrientData.filter(item => item.group === 'Proximates' && item.value > 0 && item.unit !== 'kJ' && item.name !== 'Ash')
+
+  return macronutrients.map(item => {
+    return(
+      <View style={{flexDirection: 'row', flex: 1, justifyContent: 'space-between', marginBottom:15 }}>
+        <Text>{item.name+ '     '}</Text>
+        <Text>{`${item.value} ${item.unit}`}</Text>
+      </View>
+  )
+  })
+}else{
+  return <Text> </Text>
+}
 }
 
 class ItemDetails extends React.Component {
@@ -101,7 +118,11 @@ class ItemDetails extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.header}>Check out the nutrients in {this.foodIdentified}!</Text> 
+        <Text style={styles.header}>Check out the nutrients in {this.foodIdentified}!
+        </Text>
+        <ScrollView style={styles.scrollContent}>
+          <DisplayMacroNutrients nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded} DRI={this.state.DRI} DRILoaded={this.state.DRILoaded}/>
+        </ScrollView> 
         <ScrollView style={styles.scrollContent}>
           <DisplayData nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded} DRI={this.state.DRI} DRILoaded={this.state.DRILoaded}/>
         </ScrollView>
