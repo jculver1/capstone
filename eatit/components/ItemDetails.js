@@ -101,7 +101,7 @@ class ItemDetails extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Check out the nutrients in {this.foodIdentified}!</Text> 
+        <Text style={styles.header}>Check out the nutrients in {this.foodIdentified}!</Text> 
         <ScrollView style={styles.scrollContent}>
           <DisplayData nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded} DRI={this.state.DRI} DRILoaded={this.state.DRILoaded}/>
         </ScrollView>
@@ -112,13 +112,17 @@ class ItemDetails extends React.Component {
 
 const styles = StyleSheet.create({
   container:{
-    justifyContent: 'center',
     flex: 1,
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems:'center'
   },
-
+  header:{
+    marginTop: 20,
+    marginBottom: 20
+  },
   scrollContent: {
-    paddingVertical: 20
+
+    
   }
 });
 
