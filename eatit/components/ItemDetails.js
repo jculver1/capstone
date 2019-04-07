@@ -32,7 +32,11 @@ const DisplayData = (props) => {
   // } 
   //   const sortByPercentages = findPercentages.sort(customSort)
 
-    return findPercentages.map((item) => {
+  const sortByPercentages = findPercentages.sort((a,b) => {
+    return b.percentage - a.percentage
+  })
+
+    return sortByPercentages.map((item) => {
           return(
               <Text>{item.name} {item.percentage}</Text>
           )
