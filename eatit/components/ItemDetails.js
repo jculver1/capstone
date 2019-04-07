@@ -6,23 +6,35 @@ import { ScrollView } from "react-native-gesture-handler";
 const DisplayData = (props) => {
   if(props.checkLoaded && props.DRILoaded){
     const vitAndMin = props.nutrientData.filter(item => item.group === 'Minerals' || item.group === 'Vitamins' && item.value > 0)
-    const findPercentages = vitAndMin.map(item => {
-      for(let i = 0; i < props.DRI.length; i++){
+
+    const findMatch = vitAndMin.filter(item => {
+      for(let i=0; i< props.DRI.length; i++){
         if(props.DRI[i].name === item.name){
-          return(`${item.name}: ${((item.value / props.DRI[i].daily_value) * 100).toFixed(2)}%`)
-      }
+          return item
+        }
       }
     })
-   const regex = /[+-]?\d+(\.\d+)?/g;
-   
-   const customSort = function (a, b) {
-      return ((b.match(regex)) - ((a.match(regex))));
-  } 
-  const sortByPercentages = findPercentages.sort(customSort)
 
-    return sortByPercentages.map((item) => {
+    let findPercentages = findMatch.map(item => {
+      for(let i = 0; i < props.DRI.length; i++){
+        if(item.name === props.DRI[i].name){
+          return ({
+            name: item.name, 
+            percentage: ((item.value / props.DRI[i].daily_value) * 100).toFixed(2)})
+        }
+      }
+    })
+
+  //   const regex = /[+-]?\d+(\.\d+)?/g;
+
+  //   const customSort = function (a, b) {
+  //     return ((b.match(regex)) - ((a.match(regex))));
+  // } 
+  //   const sortByPercentages = findPercentages.sort(customSort)
+
+    return findPercentages.map((item) => {
           return(
-              <Text>{item}</Text> 
+              <Text>{item.name} {item.percentage}</Text>
           )
         })
   }else{
