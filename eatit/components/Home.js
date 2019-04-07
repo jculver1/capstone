@@ -1,8 +1,11 @@
 import React from "react";
-import { Button, View, Text, Image, StyleSheet} from "react-native";
+import { View, Text, Image, StyleSheet} from "react-native";
 import { createStackNavigator, createAppContainer} from "react-navigation";
 import Camera from "./Camera";
 import ItemDetails from './ItemDetails'
+import { Button, ThemeProvider } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 
 class HomeScreen extends React.Component {
@@ -11,7 +14,8 @@ class HomeScreen extends React.Component {
       <View style={styles.container}>
         <Image source={require('../assets/logo2.png')}/>
         <Text style={styles.subHeader}>Checkout the nutrients in your food</Text>
-        <Button
+        <Button 
+          style={styles.button}
           title="Click here to get started!"
           onPress={() => this.props.navigation.navigate('CheckIt')}
         />
@@ -32,8 +36,14 @@ const styles = StyleSheet.create({
     fontSize: 21, 
     marginTop: 15,
     marginBottom: 20,
-    fontFamily: 'Cochin'
-  }
+    fontFamily: 'Cochin',
+    color: "#404040"
+  },
+  button: {
+    backgroundColor: "#007DFF",
+    borderRadius: 15,
+    marginTop: 10,  
+ }
 })
 
 const AppNavigator = createStackNavigator({

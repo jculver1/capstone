@@ -31,7 +31,7 @@ const DisplayData = (props) => {
 
     return sortByPercentages.map((item) => {
           return(
-              <View style={{flexDirection: 'row', flex: 1, justifyContent: 'space-between' }}>
+              <View style={{flexDirection: 'row', flex: 1, justifyContent: 'space-between', marginBottom:15 }}>
                 <Text>{item.name+ '     '}</Text>
                 <Text>{`${item.percentage}%`}</Text>
               </View>
@@ -105,6 +105,10 @@ class ItemDetails extends React.Component {
         <ScrollView style={styles.scrollContent}>
           <DisplayData nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded} DRI={this.state.DRI} DRILoaded={this.state.DRILoaded}/>
         </ScrollView>
+        <Button 
+          title="Check another item!"
+          onPress={() => this.props.navigation.navigate('CheckIt')}
+        />
       </View>
     );
   }
@@ -114,15 +118,20 @@ const styles = StyleSheet.create({
   container:{
     flex: 1,
     justifyContent: 'center',
-    alignItems:'center'
+    alignItems:'center',
+    alignContent: 'center'
   },
   header:{
     marginTop: 20,
     marginBottom: 20,
+    fontSize: 23, 
+    marginTop: 25,
+    marginBottom: 25,
+    fontFamily: 'Cochin'
     
   },
   scrollContent: {
-
+    flex: 1
     
   }
 });
