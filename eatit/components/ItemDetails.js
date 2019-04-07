@@ -48,7 +48,7 @@ const DisplayMacroNutrients = (props) => {
 
   return macronutrients.map(item => {
     return(
-      <View style={{flexDirection: 'row', flex: 1, justifyContent: 'space-between'}}>
+      <View style={{flexDirection: 'row', flex: 1, justifyContent: 'space-between', marginBottom:15 }}>
         <Text>{item.name+ '     '}</Text>
         <Text>{`${item.value} ${item.unit}`}</Text>
       </View>
@@ -120,9 +120,11 @@ class ItemDetails extends React.Component {
       <View style={styles.container}>
         <Text style={styles.header}>Check out the nutrients in {this.foodIdentified}!
         </Text>
+        <Text style={styles.nutrientHeaders}>Macronutrients</Text>
         <ScrollView style={styles.scrollContent}>
           <DisplayMacroNutrients nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded} DRI={this.state.DRI} DRILoaded={this.state.DRILoaded}/>
         </ScrollView> 
+        <Text style={styles.nutrientHeaders}>Micronutrients</Text>
         <ScrollView style={styles.scrollContent}>
           <DisplayData nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded} DRI={this.state.DRI} DRILoaded={this.state.DRILoaded}/>
         </ScrollView>
@@ -147,19 +149,24 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     fontSize: 23, 
     marginTop: 25,
-    marginBottom: 15,
+    marginBottom: 25,
     fontFamily: 'Cochin',
     color: "#404040"
   },
   scrollContent: {
-    marginTop: 10,
-    fontFamily: 'Cochin',
-    color: "#404040"
+    flex: 1,
+    marginTop: 20,
+    marginBottom: 20
   },
   button: {
     backgroundColor: "#007DFF",
     borderRadius: 15,
     marginBottom: 50,  
+ },
+ nutrientHeaders:{
+  fontFamily: 'Cochin',
+  color: '#EE4266',
+  fontSize: 20
  }
 });
 
