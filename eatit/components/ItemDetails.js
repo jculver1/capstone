@@ -55,9 +55,10 @@ const DisplayMacroNutrients = (props) => {
   )
   })
 }else{
-  return <Text> </Text>
+  return <Text>Loading...</Text>
 }
 }
+
 
 class ItemDetails extends React.Component {
 
@@ -133,6 +134,7 @@ class ItemDetails extends React.Component {
           onPress={() => this.props.navigation.navigate('CheckIt')}
         />
       </View>
+
     );
   }
 }
