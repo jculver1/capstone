@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, View, Text, Image } from "react-native";
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import { Button, View, Text, Image, StyleSheet} from "react-native";
+import { createStackNavigator, createAppContainer} from "react-navigation";
 import Camera from "./Camera";
 import ItemDetails from './ItemDetails'
 
@@ -8,9 +8,9 @@ import ItemDetails from './ItemDetails'
 class HomeScreen extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <View style={styles.container}>
         <Image source={require('../assets/logo2.png')}/>
-        <Text style={{ fontSize: 20, marginTop: 20}}>Checkout the nutrients in your food</Text>
+        <Text style={styles.subHeader}>Checkout the nutrients in your food</Text>
         <Button
           title="Click here to get started!"
           onPress={() => this.props.navigation.navigate('CheckIt')}
@@ -19,6 +19,18 @@ class HomeScreen extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container:{
+    flex: 1, 
+    alignItems: "center", 
+    justifyContent: "center"
+  },
+  subHeader:{
+    fontSize: 20, 
+    marginTop: 20
+  }
+})
 
 const AppNavigator = createStackNavigator({
 
