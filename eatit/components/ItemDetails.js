@@ -20,7 +20,8 @@ const DisplayData = (props) => {
         if(item.name === props.DRI[i].name){
           return ({
             name: item.name, 
-            percentage: ((item.value / props.DRI[i].daily_value) * 100).toFixed(2)})
+            percentage: ((item.value / props.DRI[i].daily_value) * 100).toFixed(2)
+          })
         }
       }
     })
@@ -41,6 +42,7 @@ const DisplayData = (props) => {
     return <Text>Loading...</Text>
   }
 }
+
 
 const DisplayMacroNutrients = (props) => {
   if(props.checkLoaded && props.DRILoaded){
@@ -69,7 +71,7 @@ class ItemDetails extends React.Component {
       checkLoaded: false,
       DRI: [],
       DRILoaded: false,
-    
+      postNutrients: []
     };
     }
 
@@ -116,6 +118,23 @@ class ItemDetails extends React.Component {
     })
   }
 
+AddToDailyLog(){
+  if(this.state.checkLoaded && this.state.DRILoaded){
+    let postData = this.state.nutrientData.map(item => {
+      return ({
+        name: item.name, 
+        value: item.value,
+        unit: item.unit 
+    })
+  })
+  console.log(postData)
+
+  this.setState(
+    {postNutrients: postData}
+  )
+  }
+}
+
 
   render() {
     return (
@@ -130,10 +149,16 @@ class ItemDetails extends React.Component {
         <ScrollView style={styles.scrollContent}>
           <DisplayData nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded} DRI={this.state.DRI} DRILoaded={this.state.DRILoaded}/>
         </ScrollView>
+        <View style={styles.buttonContainer}>
         <Button style={styles.button}
-          title="Check another item!"
+          title="Add to Log"
+          onPress={() => this.AddToDailyLog()}
+        />
+        <Button style={styles.button}
+          title="Home"
           onPress={() => this.props.navigation.navigate('CheckIt')}
         />
+        </View>
       </View>
 
     );
@@ -159,11 +184,19 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 20,
   },
+  buttonContainer:{
+    flex: 1, 
+    flexDirection: 'row',  
+    justifyContent: 'space-between',
+  },
+
   button: {
     backgroundColor: "#007DFF",
     borderRadius: 15,
-    marginBottom: 50,
-    marginTop: 20  
+    marginBottom: 20,
+    marginTop: 50,
+    marginLeft: 10,
+    marginRight: 10
  },
  nutrientHeaders:{
   fontFamily: 'Cochin',
