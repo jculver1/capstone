@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Switch} from "react-native";
+import { View, Text, StyleSheet, Switch,   ActivityIndicator,} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Button, Header} from 'react-native-elements';
 
@@ -186,7 +186,7 @@ AddToDailyLog(){
       </View>
       )
       : 
-      (<Text></Text>)
+      (<ActivityIndicator size="large" color="#EE4266" style={styles.loader} />)
       }
       </View>
 
@@ -241,7 +241,11 @@ const styles = StyleSheet.create({
   fontFamily: 'Cochin', 
   fontSize: 40,
   alignSelf: 'center'
- }
+ },
+ loader:{
+   alignSelf: 'center',
+   paddingTop: 300
+ } 
 
 });
 
