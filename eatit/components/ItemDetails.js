@@ -147,10 +147,12 @@ AddToDailyLog(){
           centerComponent={{ text: this.foodIdentified, style:styles.headerText }}
           containerStyle={{
             backgroundColor: '#EE4266',
-            justifyContent: 'space-around',
+            justifyContent: 'center',
+            alignContent: 'center',
+            alignItems: 'center'
           }}
         />
-      <Text style={styles.header}>{this.state.switchToggle ? 'Macronutrients' : 'Micronutrients'}</Text>
+        <Text style={styles.header}>{this.state.switchToggle ? 'Macronutrients' : 'Micronutrients'}</Text>
         <Switch
         style={{ marginTop: 5 }}
         onValueChange={() => this.toggleSwitch()}
@@ -160,14 +162,22 @@ AddToDailyLog(){
           {this.state.switchToggle ? (<DisplayMacroNutrients nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded} DRI={this.state.DRI} DRILoaded={this.state.DRILoaded}/>) : ( <DisplayData nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded} DRI={this.state.DRI} DRILoaded={this.state.DRILoaded}/>)}
         </ScrollView> 
         <View style={styles.buttonContainer}>
-        <Button style={styles.button}
+          <Button style={styles.button}
+          buttonStyle={{
+            backgroundColor: '#404040',
+            fontFamily: 'Cochin',
+          }}
           title="Add to Log"
           onPress={() => this.AddToDailyLog()}
-        />
-        <Button style={styles.button}
+          />
+          <Button style={styles.button}
+            buttonStyle={{
+              backgroundColor: '#404040',
+              fontFamily: 'Cochin',
+            }}
           title="Home"
           onPress={() => this.props.navigation.navigate('CheckIt')}
-        />
+          />
         </View>
       </View>
 
@@ -201,12 +211,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   button: {
-    backgroundColor: "#007DFF",
     borderRadius: 15,
     marginBottom: 5,
     marginTop: 10,
     marginLeft: 10,
-    marginRight: 10
+    marginRight: 10,
+    backgroundColor: '#EE4266',
  },
  nutrientHeaders:{
   fontFamily: 'Cochin',
@@ -221,6 +231,7 @@ const styles = StyleSheet.create({
   color: '#fff',  
   fontFamily: 'Cochin', 
   fontSize: 40,
+  alignSelf: 'center'
  }
 
 });
