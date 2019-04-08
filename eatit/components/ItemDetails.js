@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, Switch} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { Button} from 'react-native-elements';
+import { Button, Header} from 'react-native-elements';
+
 
 const DisplayData = (props) => {
   if(props.checkLoaded && props.DRILoaded){
@@ -139,14 +140,17 @@ AddToDailyLog(){
   }
 }
 
-
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.header}>Check out the nutrients in {this.foodIdentified}!
-        </Text>
-
-      <Text>{this.state.switchToggle ? 'Switch is ON' : 'Switch is OFF'}</Text>
+        <Header
+          centerComponent={{ text: this.foodIdentified, style: { color: '#fff' } }}
+          containerStyle={{
+            backgroundColor: '#EE4266',
+            justifyContent: 'space-around',
+          }}
+        />
+      <Text style={styles.header}>{this.state.switchToggle ? 'Macronutrients' : 'Micronutrients'}</Text>
         <Switch
         style={{ marginTop: 30 }}
         onValueChange={() => this.toggleSwitch()}
@@ -155,7 +159,6 @@ AddToDailyLog(){
         <ScrollView style={styles.scrollContent}>
           {this.state.switchToggle ? (<DisplayMacroNutrients nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded} DRI={this.state.DRI} DRILoaded={this.state.DRILoaded}/>) : ( <DisplayData nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded} DRI={this.state.DRI} DRILoaded={this.state.DRILoaded}/>)}
         </ScrollView> 
-       
         <View style={styles.buttonContainer}>
         <Button style={styles.button}
           title="Add to Log"
@@ -190,13 +193,13 @@ const styles = StyleSheet.create({
   scrollContent: {
     flex: 1,
     marginTop: 20,
+    marginBottom: 50,
   },
   buttonContainer:{
     flex: 1, 
     flexDirection: 'row',  
     justifyContent: 'space-between',
   },
-
   button: {
     backgroundColor: "#007DFF",
     borderRadius: 15,
@@ -209,6 +212,10 @@ const styles = StyleSheet.create({
   fontFamily: 'Cochin',
   color: '#EE4266',
   fontSize: 20
+ },
+ toggle:{
+  marginTop: 50,
+  marginBottom: 50
  }
 });
 

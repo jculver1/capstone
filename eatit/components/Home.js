@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet} from "react-native";
 import { createStackNavigator, createAppContainer} from "react-navigation";
 import Camera from "./Camera";
 import ItemDetails from './ItemDetails'
-import { Button, ThemeProvider } from 'react-native-elements';
+import { Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
