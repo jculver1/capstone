@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList, ListView } from "react-native";
+import { View, Text, StyleSheet, Switch} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Button} from 'react-native-elements';
 
@@ -71,7 +71,7 @@ class ItemDetails extends React.Component {
       checkLoaded: false,
       DRI: [],
       DRILoaded: false,
-      postNutrients: []
+      switchToggle: false
     };
     }
 
@@ -118,6 +118,10 @@ class ItemDetails extends React.Component {
     })
   }
 
+toggleSwitch = value => {
+  this.setState({ switchToggle: !this.state.switchToggle })
+}
+
 AddToDailyLog(){
   if(this.state.checkLoaded && this.state.DRILoaded){
     let postData = this.state.nutrientData.map(item => {
@@ -141,14 +145,17 @@ AddToDailyLog(){
       <View style={styles.container}>
         <Text style={styles.header}>Check out the nutrients in {this.foodIdentified}!
         </Text>
-        <Text style={styles.nutrientHeaders}>Macronutrients</Text>
+
+      <Text>{this.state.switchToggle ? 'Switch is ON' : 'Switch is OFF'}</Text>
+        <Switch
+        style={{ marginTop: 30 }}
+        onValueChange={() => this.toggleSwitch()}
+        value={!this.state.switchToggle}
+        />
         <ScrollView style={styles.scrollContent}>
-          <DisplayMacroNutrients nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded} DRI={this.state.DRI} DRILoaded={this.state.DRILoaded}/>
+          {this.state.switchToggle ? (<DisplayMacroNutrients nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded} DRI={this.state.DRI} DRILoaded={this.state.DRILoaded}/>) : ( <DisplayData nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded} DRI={this.state.DRI} DRILoaded={this.state.DRILoaded}/>)}
         </ScrollView> 
-        <Text style={styles.nutrientHeaders}>Micronutrients</Text>
-        <ScrollView style={styles.scrollContent}>
-          <DisplayData nutrientData={this.state.nutrientData} checkLoaded={this.state.checkLoaded} DRI={this.state.DRI} DRILoaded={this.state.DRILoaded}/>
-        </ScrollView>
+       
         <View style={styles.buttonContainer}>
         <Button style={styles.button}
           title="Add to Log"
