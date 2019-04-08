@@ -143,6 +143,10 @@ AddToDailyLog(){
   render() {
     return (
       <View style={styles.container}>
+
+      {this.state.DRILoaded && this.state.checkLoaded ? 
+      (
+      <View style={styles.container}>
         <Header
           centerComponent={{ text: this.foodIdentified, style:styles.headerText }}
           containerStyle={{
@@ -179,6 +183,11 @@ AddToDailyLog(){
           onPress={() => this.props.navigation.navigate('CheckIt')}
           />
         </View>
+      </View>
+      )
+      : 
+      (<Text></Text>)
+      }
       </View>
 
     );
