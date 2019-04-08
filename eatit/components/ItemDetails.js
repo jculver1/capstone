@@ -144,7 +144,7 @@ AddToDailyLog(){
     return (
       <View style={styles.container}>
         <Header
-          centerComponent={{ text: this.foodIdentified, style: { color: '#fff' } }}
+          centerComponent={{ text: this.foodIdentified, style:styles.headerText }}
           containerStyle={{
             backgroundColor: '#EE4266',
             justifyContent: 'space-around',
@@ -152,7 +152,7 @@ AddToDailyLog(){
         />
       <Text style={styles.header}>{this.state.switchToggle ? 'Macronutrients' : 'Micronutrients'}</Text>
         <Switch
-        style={{ marginTop: 30 }}
+        style={{ marginTop: 5 }}
         onValueChange={() => this.toggleSwitch()}
         value={!this.state.switchToggle}
         />
@@ -178,9 +178,9 @@ AddToDailyLog(){
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems:'center',
-    alignContent: 'center'
+    alignContent: 'space-between'
   },
   header:{
     marginTop: 20,
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
   scrollContent: {
     flex: 1,
     marginTop: 20,
-    marginBottom: 50,
+    // marginBottom: 20,
   },
   buttonContainer:{
     flex: 1, 
@@ -203,8 +203,8 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#007DFF",
     borderRadius: 15,
-    marginBottom: 20,
-    marginTop: 50,
+    marginBottom: 5,
+    marginTop: 10,
     marginLeft: 10,
     marginRight: 10
  },
@@ -216,7 +216,13 @@ const styles = StyleSheet.create({
  toggle:{
   marginTop: 50,
   marginBottom: 50
+ },
+ headerText:{
+  color: '#fff',  
+  fontFamily: 'Cochin', 
+  fontSize: 40,
  }
+
 });
 
 export default ItemDetails;
