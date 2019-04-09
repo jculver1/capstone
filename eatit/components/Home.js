@@ -16,6 +16,10 @@ class HomeScreen extends React.Component {
         <Text style={styles.subHeader}>Checkout the nutrients in your food</Text>
         <Button 
           style={styles.button}
+          buttonStyle={{
+            backgroundColor: '#EE4266',
+            fontFamily: 'Cochin',
+          }}
           title="Click here to get started!"
           onPress={() => this.props.navigation.navigate('CheckIt')}
         />
@@ -33,16 +37,16 @@ const styles = StyleSheet.create({
     marginBottom: 110,
   },
   subHeader:{
-    fontSize: 21, 
+    fontSize: 22, 
     marginTop: 15,
     marginBottom: 20,
     fontFamily: 'Cochin',
     color: "#404040"
   },
   button: {
-    backgroundColor: "#007DFF",
     borderRadius: 15,
-    marginTop: 10,  
+    marginTop: 10, 
+    color: '#404040', 
  }
 })
 

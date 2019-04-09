@@ -167,20 +167,20 @@ AddToDailyLog(){
         </ScrollView> 
         <View style={styles.buttonContainer}>
           <Button style={styles.button}
-          buttonStyle={{
-            backgroundColor: '#404040',
-            fontFamily: 'Cochin',
-          }}
-          title="Add to Log"
-          onPress={() => this.AddToDailyLog()}
-          />
-          <Button style={styles.button}
             buttonStyle={{
-              backgroundColor: '#404040',
+              backgroundColor: '#EE4266',
               fontFamily: 'Cochin',
             }}
-          title="Home"
-          onPress={() => this.props.navigation.navigate('CheckIt')}
+            title="Add to Log"
+            onPress={() => this.AddToDailyLog()}
+          />
+          <Button style={styles.button}
+              buttonStyle={{
+                backgroundColor: '#EE4266',
+                fontFamily: 'Cochin',
+            }}
+            title="Home"
+            onPress={() => this.props.navigation.navigate('CheckIt')}
           />
         </View>
       </View>
@@ -218,6 +218,7 @@ const styles = StyleSheet.create({
     flex: 1, 
     flexDirection: 'row',  
     justifyContent: 'space-between',
+    color: '#404040',
   },
   button: {
     borderRadius: 15,
@@ -225,7 +226,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginLeft: 10,
     marginRight: 10,
-    backgroundColor: '#EE4266',
+    color: '#404040',
  },
  nutrientHeaders:{
   fontFamily: 'Cochin',
