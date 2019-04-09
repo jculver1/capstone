@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 15,
     marginBottom: 5,
-    marginTop: 10,
+    marginTop: 25,
     marginLeft: 10,
     marginRight: 10,
     color: '#404040',
@@ -234,7 +234,6 @@ const styles = StyleSheet.create({
   fontSize: 20
  },
  toggle:{
-  marginTop: 15,
   marginBottom: 15,
   backgroundColor: '#EE4266', 
   borderRadius: 17
