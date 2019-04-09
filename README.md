@@ -28,16 +28,12 @@ Tech used:
 
 Color palette:
 1. #EE4266 PARADISE PINK
-1. #007DFF Dark Blue
-1. #A9A9A9 Light Gray
-1. #FFFE9F Light Yellow
-1. #404040 Dark Gray
+1. #404040 DARK GRAY
+1. #00CC99 CARIBBEAN GREEN
 
 ![alt text](https://www.colorhexa.com/ee4266.png) 
-![alt text](https://www.colorhexa.com/007dff.png) 
-![alt text](https://www.colorhexa.com/a9a9a9.png) 
-![alt text](https://www.colorhexa.com/fffe9f.png) 
-![alt text](https://www.colorhexa.com/404040.png)    
+![alt text](https://www.colorhexa.com/404040.png)
+![alt text](https://www.colorhexa.com/00CC99.png)
 
 
 
