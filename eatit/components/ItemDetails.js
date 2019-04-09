@@ -78,6 +78,8 @@ class ItemDetails extends React.Component {
 
   foodIdentified = this.props.navigation.state.params.foodItem
 
+  foodIdFormated = this.foodIdentified.charAt(0).toUpperCase() + this.foodIdentified.slice(1)
+
   foodsRoute = `https://glacial-wave-75572.herokuapp.com/foods/${this.foodIdentified}`
 
   nutrientRoute = 'https://glacial-wave-75572.herokuapp.com/nutrients'
@@ -87,13 +89,14 @@ class ItemDetails extends React.Component {
     return fetch(this.foodsRoute)
     .then(response => response.json())
     .then(responseJson => {
-      let food_id = responseJson[0].usda_id
+      const food_id = responseJson[0].usda_id
       console.log(food_id)
       return fetch(`https://api.nal.usda.gov/ndb/reports/?ndbno=${food_id}&type=f&format=json&api_key=g03EsNMIdLVGVFxer9G0rkguZEPyUf2dcDyxlKH6&nutrients=205&nutrients=204&nutrients=208&nutrients=269`)
       .then(respons => respons.json())
       .then(responseJson => {
         this.setState(
-          {nutrientData : responseJson.report.food.nutrients,
+          {
+          nutrientData : responseJson.report.food.nutrients,
           checkLoaded : !this.state.checkLoaded
           }
           )
@@ -148,7 +151,7 @@ AddToDailyLog(){
       (
       <View style={styles.container}>
         <Header
-          centerComponent={{ text: this.foodIdentified, style:styles.headerText }}
+          centerComponent={{ text: this.foodIdFormated, style:styles.headerText }}
           containerStyle={{
             backgroundColor: '#EE4266',
             justifyContent: 'center',
@@ -199,7 +202,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     alignItems:'center',
-    alignContent: 'space-between'
+    // alignContent: 'space-between'
   },
   header:{
     marginTop: 20,
