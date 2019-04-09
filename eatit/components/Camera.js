@@ -64,7 +64,7 @@ export default class Camera extends React.Component {
 					text: 'Try again',
 					onPress: () => this.camera.resumePreview(),
 				},
-				{text: 'Add Item', 
+				{text: 'Checkout the Nutrients', 
 				onPress:() => this.props.navigation.navigate('ItemInformation', { foodItem: this.state.identifedAs })}
 			]
 		  )

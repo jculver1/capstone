@@ -17,7 +17,7 @@ class HomeScreen extends React.Component {
         <Button 
           style={styles.button}
           buttonStyle={{
-            backgroundColor: '#EE4266',
+            backgroundColor: '#00CC99',
             fontFamily: 'Cochin',
           }}
           title="Click here to get started!"

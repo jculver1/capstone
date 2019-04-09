@@ -151,7 +151,10 @@ AddToDailyLog(){
       (
       <View style={styles.container}>
         <Header
-          centerComponent={{ text: this.foodIdFormated, style:styles.headerText }}
+          centerComponent={{ 
+            text: this.foodIdFormated, 
+            style:styles.headerText 
+          }}
           containerStyle={{
             backgroundColor: '#EE4266',
             justifyContent: 'center',
@@ -161,7 +164,8 @@ AddToDailyLog(){
         />
         <Text style={styles.header}>{this.state.switchToggle ? 'Macronutrients' : 'Micronutrients'}</Text>
         <Switch
-        style={{ marginTop: 5 }}
+        // style={{ marginTop: 5 }}
+        style={styles.toggle}
         onValueChange={() => this.toggleSwitch()}
         value={!this.state.switchToggle}
         />
@@ -170,19 +174,11 @@ AddToDailyLog(){
         </ScrollView> 
         <View style={styles.buttonContainer}>
           <Button style={styles.button}
-            buttonStyle={{
-              backgroundColor: '#EE4266',
-              fontFamily: 'Cochin',
-            }}
-            title="Add to Log"
-            onPress={() => this.AddToDailyLog()}
-          />
-          <Button style={styles.button}
               buttonStyle={{
-                backgroundColor: '#EE4266',
+                backgroundColor: '#00CC99',
                 fontFamily: 'Cochin',
             }}
-            title="Home"
+            title="Check A Different Item"
             onPress={() => this.props.navigation.navigate('CheckIt')}
           />
         </View>
@@ -222,6 +218,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',  
     justifyContent: 'space-between',
     color: '#404040',
+    paddingTop: 50
   },
   button: {
     borderRadius: 15,
@@ -237,8 +234,10 @@ const styles = StyleSheet.create({
   fontSize: 20
  },
  toggle:{
-  marginTop: 50,
-  marginBottom: 50
+  marginTop: 15,
+  marginBottom: 15,
+  backgroundColor: '#EE4266', 
+  borderRadius: 17
  },
  headerText:{
   color: '#fff',  
