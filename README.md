@@ -1,4 +1,4 @@
-# capstone
+# Capstone - Eatit
 
 Problem Statement
 
@@ -14,16 +14,15 @@ https://www.justinmind.com/usernote/tests/39976685/39980508/39980510/index.html
 Trello:
 https://trello.com/invite/b/1jamE5WS/6a5107f64354eb53855fd8675ddea118/capstone
 
+Github link to backend: 
+https://github.com/jculver1/capstone_backend
+
 Tech used:
 1. React Native
 1. PSQL
 1. Node.js
 1. Express
-1. Tensorflow.js
-    1. Object detection
-    1. Tensorflow light
-    1. React-Native TensorFlow
-        1. Need CocoaPods and Xcode
+1. Clarifai API
 1. USDA API
 
 Color palette:
