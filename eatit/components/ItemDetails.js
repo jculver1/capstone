@@ -110,10 +110,10 @@ class ItemDetails extends React.Component {
     return fetch(this.nutrientRoute)
     .then(response => response.json())
     .then(responseJson => {
-      this.setState(
-        {DRI: responseJson,
-        DRILoaded: true}
-      )
+      this.setState({
+        DRI: responseJson,
+        DRILoaded: true
+       })
       console.log(this.state.DRI)
     })
     .catch(error => {
@@ -134,11 +134,9 @@ AddToDailyLog(){
         unit: item.unit 
     })
   })
-  console.log(postData)
-
-  this.setState(
-    {postNutrients: postData}
-  )
+  this.setState({
+    postNutrients: postData
+  })
   }
 }
 
