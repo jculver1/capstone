@@ -90,7 +90,6 @@ class ItemDetails extends React.Component {
     .then(response => response.json())
     .then(responseJson => {
       const food_id = responseJson[0].usda_id
-      console.log(food_id)
       return fetch(`https://api.nal.usda.gov/ndb/reports/?ndbno=${food_id}&type=f&format=json&api_key=g03EsNMIdLVGVFxer9G0rkguZEPyUf2dcDyxlKH6&nutrients=205&nutrients=204&nutrients=208&nutrients=269`)
       .then(respons => respons.json())
       .then(responseJson => {
